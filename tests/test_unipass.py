@@ -1,7 +1,7 @@
 import os
 from unittest import TestCase
 
-from main import api002
+from unipass import api002
 
 
 class TestMain(TestCase):

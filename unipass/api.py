@@ -37,7 +37,8 @@ class UP002Resp1(TypedDict):
 def api002(api_key: str, exp_dclr_no: str) -> UP002Resp1:
     """
     수출신고번호별 수출이행 내역 (수출신고번호로 조회)
-    :param api_key:
+
+    :param api_key: unipass 의 수출신고번호별수출이행내역조회 인증키
     :param exp_dclr_no: 수출신고번호
     :return:
     """
@@ -66,11 +67,3 @@ def api002(api_key: str, exp_dclr_no: str) -> UP002Resp1:
     result['details'] = details
 
     return result
-
-
-def handle(event, context):
-    api_key = os.environ['api_key']
-    svc_cd = event.pop('svcCd', None)
-    if svc_cd == 'api002':
-        exp_dclr_no = event.pop('expDclrNo')
-        return api002(api_key=api_key, exp_dclr_no=exp_dclr_no)
